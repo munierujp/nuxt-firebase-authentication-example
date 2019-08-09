@@ -7,9 +7,12 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint"
@@ -30,6 +33,7 @@
     "eslint-plugin-nuxt": ">=0.4.2",
     "firebase": "^6.3.4",
     "husky": "^2.6.0",
-    "lint-staged": "^8.2.1"
+    "lint-staged": "^8.2.1",
+    "push-dir": "^0.4.1"
   }
 }

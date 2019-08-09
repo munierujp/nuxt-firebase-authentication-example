@@ -1,3 +1,8 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/nuxt-firebase-authentication-example/'
+  }
+} : {}
 
 export default {
   mode: 'spa',
@@ -50,5 +55,6 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  ...routerBase
 }
