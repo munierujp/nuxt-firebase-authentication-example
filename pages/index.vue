@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import firebase from '~/modules/firebase'
+import { auth } from '~/modules/firebase'
 
 export default {
   asyncData () {
@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted () {
-    firebase.auth().onAuthStateChanged((user) => {
+    auth().onAuthStateChanged((user) => {
       this.isLoading = false
       if (user) {
         this.isSignedIn = true
@@ -57,11 +57,11 @@ export default {
   },
   methods: {
     signIn () {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
+      const provider = new auth.GoogleAuthProvider()
+      auth().signInWithRedirect(provider)
     },
     signOut () {
-      firebase.auth().signOut()
+      auth().signOut()
     }
   }
 }
